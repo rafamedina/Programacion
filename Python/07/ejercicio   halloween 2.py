@@ -12,7 +12,7 @@ objetos = [        #Lista de objetos
     "hechizo",
     "espada",
 ]
-switch = True    #Booleano para el resultado final
+switch = False    #Booleano para el resultado final
 intentos = 3  #Numero de intentos
 objetos_sin_comillas = ", ".join(objetos) #para que al mostrar la lista no se vea con comillas
 
