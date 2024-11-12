@@ -58,7 +58,6 @@ def leerlineasindividualesyañadirenunalista():
 def escribirenarchivo():
     with open ("mi_archivo.txt","w") as archivo:
         archivo.write("Podemos ecribir varias lineas asi1")
-        archivo.write("Podemos ecribir varias lineas asi2")
 
 
 #main()
