@@ -119,50 +119,47 @@ def seguimiento_pedido():
     except ValueError:
         print("Número de pedido no válido.")
 
-# Función principal para interactuar con el sistema
+# Función principal para el menu
 def menu():
-    dni_cliente_actual = 0
+    dni_cliente_actual = 0  # Inicializamos el DNI del cliente actual a 0
 
-    # Requerir inicio de sesión o registro antes de acceder al menú
+    # Requerimos que el usuario inicie sesion o se registre antes de poder acceder al menú
     while dni_cliente_actual == 0:
-        dni_cliente_actual = registro(listaregistro)
+        dni_cliente_actual = registro(listaregistro)  # Llamamos a la función de registro
 
-    # Mostrar el menú solo si se ha registrado o iniciado sesión
+    # Mostramos el menú solo si el usuario se ha registrado o ha iniciado sesión correctamente
     while True:
-        print("\n--- Menú de la tienda ---")
-        print("1. Visualizar clientes registrados")
-        print("2. Buscar cliente por DNI")
-        print("3. Ver productos disponibles")
-        print("4. Añadir producto al carrito")
-        print("5. Ver carrito de compras")
-        print("6. Realizar compra")
-        print("7. Seguimiento de pedido")
-        print("8. Salir")
+        print("\n--- Menú de la tienda ---")  
+        print("1. Visualizar clientes registrados")  
+        print("2. Buscar cliente por DNI")  
+        print("3. Ver productos disponibles") 
+        print("4. Añadir producto al carrito")  
+        print("5. Ver carrito de compras") 
+        print("6. Realizar compra") 
+        print("7. Seguimiento de pedido")  
+        print("8. Salir") 
 
-        opcion = input("Seleccione una opción: ")
+        opcion = input("Seleccione una opción: ")  # Pedimos al usuario que elija una opción
 
+        # Dependiendo de la opción elegida, llamamos a diferentes funciones
         if opcion == '1':
-            visualizarclientes(listaregistro)
+            visualizarclientes(listaregistro)  
         elif opcion == '2':
-            buscarclientes(listaregistro)
+            buscarclientes(listaregistro)  
         elif opcion == '3':
-            mostrarproductos()
+            mostrarproductos()  
         elif opcion == '4':
-            añadirproductoacarrito()
+            añadirproductoacarrito()  
         elif opcion == '5':
-            mostrarcarrito()
+            mostrarcarrito()  
         elif opcion == '6':
-            realizar_compra(dni_cliente_actual)
+            realizar_compra(dni_cliente_actual) 
         elif opcion == '7':
-            seguimiento_pedido()
+            seguimiento_pedido()  
         elif opcion == '8':
-            print("Saliendo de la aplicación.")
-            break
+            print("Saliendo de la aplicación.") 
+            break  # Salimos del bucle y terminamos el menú
         else:
-            print("Opción no válida. Intente nuevamente.")
-
-# Llamada a la función principal
-
-menu()
+            print("Opción no válida. Intente nuevamente.")  # Mensaje si la opción no es válida
 
 
