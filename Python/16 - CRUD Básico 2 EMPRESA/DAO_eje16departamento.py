@@ -56,8 +56,8 @@ def Eliminarregistro():
 def menu():
     opcion=0
 
-    while opcion != 5:
-            print("Menú BBDD empresa")
+    while True:
+            print("Menú BBDD empresa.departamento")
             print("1. Insertar registro")
             print("2. Listar registros")
             print("3. Modificar registro")
@@ -74,6 +74,7 @@ def menu():
                 Eliminarregistro()
             elif opcion == "5":
                 print("adiós")
+                break
             else:
                 print("Opción no válida, por favor elige una opción del menú")
 

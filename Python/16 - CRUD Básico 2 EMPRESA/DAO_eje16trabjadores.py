@@ -43,7 +43,7 @@ def modificarregistro():
         antiguedad2 = input("Inserta la antiguedad: ")
         salario2 = input("Inserta el salario: ")
         departamento2 = input("a que departamento esta asociado: ")
-        actualizar2 = f'''UPDATE trabajadores SET dni = '{dni2}', nombre = '{nombre2}', ciudad = '{ciudad2}', antiguedad = {antiguedad2}, salario = {salario2}, departamento = {departamento2} WHERE DNI = {cambiodni};'''
+        actualizar2 = f'''UPDATE trabajadores SET dni = '{dni2}', nombre = '{nombre2}', ciudad = '{ciudad2}', antiguedad = {antiguedad2}, salario = {salario2}, departamento = {departamento2} WHERE DNI = '{cambiodni}';'''
         cursor.execute(actualizar2)
         conexion.commit()
     except Exception as e:   
@@ -56,20 +56,22 @@ def Eliminarregistro():
     try:
         conexion = ConectaBBDD.conectaBBDD('empresa')
         cursor = conexion.cursor()
-        DNIeliminar= input("que DNI quiere borrar: ")
-        eliminar = f'''DELETE FROM trabajadores WHERE dni = {DNIeliminar};'''
-        cursor.execute(eliminar)
+        DNIeliminar = input("¿Qué DNI quiere borrar? ")
+        eliminar = '''DELETE FROM trabajadores WHERE dni = %s;'''
+        cursor.execute(eliminar, (DNIeliminar,))
+        conexion.commit()  
     except Exception as e:
-        cursor.close()
-        conexion.close()
-        listarvalores()
+        print(f"Ocurrió un error: {e}")  
+        cursor.close() 
+        conexion.close()  
+    listarvalores()  
 
 
 def menu():
     opcion=0
 
-    while opcion != 5:
-            print("Menú BBDD empresa")
+    while True:
+            print("Menú BBDD empresa.trabajadores")
             print("1. Insertar registro")
             print("2. Listar registros")
             print("3. Modificar registro")
@@ -86,6 +88,7 @@ def menu():
                 Eliminarregistro()
             elif opcion == "5":
                 print("adiós")
+                break
             else:
                 print("Opción no válida, por favor elige una opción del menú")
 
