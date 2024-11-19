@@ -1,14 +1,18 @@
 import ConectaBBDD
 
 def insertar():
-    conexion = ConectaBBDD.conectaBBDD('empresa')
-    cursor = conexion.cursor()
-    nombre_departamento= input("Que nombre de departamento quiere insertar: ")
-    insertarempresa = f'''Insert into departamento (nombredep) values ('{nombre_departamento}');'''    
-    cursor.execute(insertarempresa)
-    conexion.commit()
-    cursor.close()
-    conexion.close()
+    try:    
+        conexion = ConectaBBDD.conectaBBDD('empresa')
+        cursor = conexion.cursor()
+        nombre_departamento= input("Que nombre de departamento quiere insertar: ")
+        insertarempresa = f'''Insert into departamento (nombredep) values ('{nombre_departamento}');'''    
+        cursor.execute(insertarempresa)
+        conexion.commit()
+    except Exception as e:
+        print(f"Ocurrió un error inesperado: {e}")
+        cursor.close()
+        conexion.close()
+
 
 def listarvalores():
     conexion = ConectaBBDD.conectaBBDD('empresa')
@@ -22,27 +26,31 @@ def listarvalores():
     conexion.close
 
 def modificarregistro():
-    conexion = ConectaBBDD.conectaBBDD('empresa')
-    cursor = conexion.cursor()
-    nombredepacambiar= input("que numdep quiere cambiar el nombre: ")
-    nombrenuevo=input("Que nombre va a ser el nuevo: ")
-    actualizar = f'''UPDATE departamento SET nombredep = '{nombrenuevo}' WHERE numdep = {nombredepacambiar};'''
-    cursor.execute(actualizar)
-    conexion.commit()
-    cursor.close()
-    conexion.close()
-    listarvalores()
+    try:
+        conexion = ConectaBBDD.conectaBBDD('empresa')
+        cursor = conexion.cursor()
+        nombredepacambiar= input("que numdep quiere cambiar el nombre: ")
+        nombrenuevo=input("Que nombre va a ser el nuevo: ")
+        actualizar = f'''UPDATE departamento SET nombredep = '{nombrenuevo}' WHERE numdep = {nombredepacambiar};'''
+        cursor.execute(actualizar)
+        conexion.commit()
+    except Exception as e:   
+        cursor.close()
+        conexion.close()
+        listarvalores()
 
 
 def Eliminarregistro():
-    conexion = ConectaBBDD.conectaBBDD('empresa')
-    cursor = conexion.cursor()
-    numdepeliminar= input("que numdep quiere borrar: ")
-    eliminar = f'''DELETE FROM departamento WHERE numdep = {numdepeliminar};'''
-    cursor.execute(eliminar)
-    cursor.close()
-    conexion.close()
-    listarvalores()
+    try:
+        conexion = ConectaBBDD.conectaBBDD('empresa')
+        cursor = conexion.cursor()
+        numdepeliminar= input("que numdep quiere borrar: ")
+        eliminar = f'''DELETE FROM departamento WHERE numdep = {numdepeliminar};'''
+        cursor.execute(eliminar)
+    except Exception as e:
+        cursor.close()
+        conexion.close()
+        listarvalores()
 
 
 def menu():
