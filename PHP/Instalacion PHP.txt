@@ -1,0 +1,6 @@
+1. Tener servidor de BBDD(uniserver, mysqlworkbench)
+2. Tener servidor web
+3. se trabaja en vsco en C:\xampp\htdocs
+4. editar variables de entorno del sistema 
+5. path, editar, nuevo c:\xampp\php
+6. en el terminal php --version
