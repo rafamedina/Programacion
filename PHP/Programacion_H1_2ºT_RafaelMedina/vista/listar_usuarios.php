@@ -48,7 +48,9 @@ $lista = $controller->obtenerUsuariosCompletos();
                         <th>edad</th>
                         <th>Telefono</th>
                         <th>Plan Obtenido</th>
+                        <th>Precio Plan</th>
                         <th>Paquetes Obtenidos</th>
+                        <th>Precio Paquetes</th>
                         <th>Dispositivos</th>
                         <th>Cuota</th>
                         <th>Acciones</th>
@@ -65,7 +67,9 @@ $lista = $controller->obtenerUsuariosCompletos();
                             <td><?= $lista['edad'] ?></td>
                             <td><?= $lista['telefono'] ?></td>
                             <td><?= $lista['Plan_Obtenido'] ?></td>
+                            <td><?= $lista['precio_plan'] ?></td>
                             <td><?= $lista['Paquetes_Obtenidos'] ?></td>
+                            <td><?= $lista['precio_paquete'] ?></td>
                             <td><?= $lista['dispositivos'] ?></td>
                             <td><?= $lista['Cuota'] ?></td>
                             <td>

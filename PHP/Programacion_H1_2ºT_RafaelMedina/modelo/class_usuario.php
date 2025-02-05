@@ -183,7 +183,9 @@ class Usuario
             r.id_resumen,
             u.*, 
             CONCAT_WS(', ', pl.nombre, pl.duracion_suscripcion) AS Plan_Obtenido,
+            pl.precio as precio_plan,
             CONCAT_WS(', ', p1.nombre, p2.nombre, p3.nombre) AS Paquetes_Obtenidos,
+            CONCAT_WS(', ', p1.precio, p2.precio, p3.precio) AS precio_paquete,
             pl.dispositivos,
             (pl.precio + IFNULL(p1.precio, 0) + IFNULL(p2.precio, 0) + IFNULL(p3.precio, 0)) AS Cuota
             FROM Usuarios u
@@ -191,7 +193,7 @@ class Usuario
             JOIN Plan pl ON r.id_plan = pl.id_plan
             LEFT JOIN Paquetes p1 ON r.id_paquete1 = p1.id_paquete
             LEFT JOIN Paquetes p2 ON r.id_paquete2 = p2.id_paquete
-            LEFT JOIN Paquetes p3 ON r.id_paquete3 = p3.id_paquete";
+            LEFT JOIN Paquetes p3 ON r.id_paquete3 = p3.id_paquete ";
 
         $resultado = $this->conexion->conexion->query($query);
 
@@ -214,7 +216,9 @@ class Usuario
             r.id_resumen,
             u.*, 
             CONCAT_WS(', ', pl.nombre, pl.duracion_suscripcion) AS Plan_Obtenido,
+            pl.precio,
             CONCAT_WS(', ', p1.nombre, p2.nombre, p3.nombre) AS Paquetes_Obtenidos,
+            CONCAT_WS(', ', p1.precio, p2.precio, p3.precio) AS Precios_Paquetes,
             pl.dispositivos,
             (pl.precio + IFNULL(p1.precio, 0) + IFNULL(p2.precio, 0) + IFNULL(p3.precio, 0)) AS Cuota
             FROM Usuarios u
